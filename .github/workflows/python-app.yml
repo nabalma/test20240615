@@ -24,10 +24,13 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add README.md
         git commit -m "Add commit message to README.md"
+        git pull --rebase origin main
+        git push
       shell: bash
 
   Thanking:
     runs-on: windows-latest
+    needs: Date_and_Time  # This makes the 'Thanking' job dependent on the 'Date_and_Time' job
     steps:
     - uses: actions/checkout@v4
     - name: Add greetings message to README.md
@@ -39,5 +42,6 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add README.md
         git commit -m "Add commit message to README.md"
+        git pull --rebase origin main
         git push
       shell: bash
